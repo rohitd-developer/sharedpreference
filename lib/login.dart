@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_2/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:email_validator/email_validator.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -30,6 +31,8 @@ class _LoginState extends State<Login> {
                       validator: (String value) {
                         if (value.isEmpty) {
                           return 'Email cant be empty.';
+                        } else if (!(EmailValidator.validate(value))) {
+                          return 'Please enter valid email';
                         }
                       },
                       controller: emailController,
