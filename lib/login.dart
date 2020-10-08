@@ -9,8 +9,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController emailController = TextEditingController();
   var _formKey = GlobalKey<FormState>();
+  //text controller for input
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
@@ -21,13 +22,14 @@ class _LoginState extends State<Login> {
           key: _formKey,
           child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.0),
-              // margin: EdgeInsets.symmetric(horizontal: 8.0),
               child: Column(
                 children: <Widget>[
+                  //widget 1
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       // ignore: missing_return
+                      //validation
                       validator: (String value) {
                         if (value.isEmpty) {
                           return 'Email cant be empty.';
@@ -45,10 +47,13 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
+
+                  //widget 2
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       obscureText: true,
+                      //validation
                       validator: (String value) {
                         if (value.isEmpty) {
                           return 'Password cant be empty.';
@@ -68,6 +73,8 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
+
+                  /// widget 3
                   Container(
                     child: FlatButton(
                       color: Colors.blue,
@@ -78,12 +85,10 @@ class _LoginState extends State<Login> {
                       onPressed: () {
                         setState(() {
                           if (_formKey.currentState.validate()) {
-                            load();
+                            load(); //sets sharedpref values
                             navigateHome();
                           }
                         });
-
-                        //actions
                       },
                     ),
                   )

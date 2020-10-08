@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _load();
+    _load(); //shared preference set parameters
   }
 
   _load() async {
@@ -35,12 +35,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Homepage'),
+        //show button in appbar
         actions: <Widget>[
           FlatButton(
               onPressed: () async {
                 SharedPreferences sharedPreferences =
                     await SharedPreferences.getInstance();
                 sharedPreferences.setBool('loginFlag', false);
+                //on pressesd logout navigate to login page
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Login()));
               },
@@ -52,6 +54,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            //widget 1
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -59,6 +62,8 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.w500),
               ),
             ),
+
+            //widget2
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
